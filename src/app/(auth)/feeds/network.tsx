@@ -259,25 +259,4 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  input: {
-    flexShrink: 1,
-    margin: 10,
-    alignItems: 'center',
-    borderRadius: 10,
-    fontSize: 20,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: 'rgba(151, 151, 151, 0.25)',
-    backgroundColor: 'rgba(151, 151, 151, 0.05)',
-  },
-  footerContainer: {
-    padding: 12,
-    borderTopWidth: 1,
-    borderTopColor: '#eee',
-  },
-  footerText: {
-    textAlign: 'center',
-    color: 'white',
-    fontWeight: '800',
-  },
 })
