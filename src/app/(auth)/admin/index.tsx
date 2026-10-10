@@ -60,20 +60,6 @@ export default function Page() {
               countDanger={true}
               path="/admin/reports/"
             />
-            {/* <GroupButton
-              icon="message-circle"
-              title="Admin Inbox"
-              count={stats?.contact}
-              countDanger={true}
-              path="/settings/profile"
-            /> */}
-            {/* <GroupButton
-              icon="list"
-              title="ModLog"
-              count={3}
-              countDanger={true}
-              path="/admin/instances"
-            /> */}
           </Group>
 
           <Group orientation="vertical" separator={<Separator borderColor="$gray2" />}>
@@ -83,29 +69,15 @@ export default function Page() {
               count={stats?.instances}
               path="/admin/instances"
             />
-            {/* <GroupButton
-              icon="image"
-              title="Posts"
-              count={stats?.statuses}
-              path="/settings/profile"
-            />
-            <GroupButton
-              icon="user"
-              title="Profiles"
-              count={stats?.profiles}
-              path="/settings/profile"
-            /> */}
             <GroupButton
               icon="user"
               title="Local Users"
               count={stats?.users}
               path="/admin/users"
             />
-            {/* <GroupButton icon="plus" title="Show all" path="/settings/profile" /> */}
           </Group>
 
           <Group orientation="vertical" separator={<Separator borderColor="$gray2" />}>
-            {/* <GroupButton icon="shield" title="Roles" path="/admin/instances" /> */}
             <GroupButton
               icon="server"
               title="Server Configuration"
