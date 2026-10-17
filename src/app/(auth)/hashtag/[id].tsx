@@ -100,20 +100,6 @@ export default function Page() {
     []
   )
 
-  const _RenderRelatedItem = useCallback(
-    ({ item }) =>
-      item && item.name ? (
-        <View p="$3" borderWidth={1}>
-          <Link href={`/hashtag/${item.name}`}>
-            <View p="$3" borderWidth={1}>
-              <Text fontSize="$5">{item.name}</Text>
-            </View>
-          </Link>
-        </View>
-      ) : null,
-    []
-  )
-
   const followMutation = useMutation({
     mutationFn: (action) => {
       return action === 'follow' ? followHashtag(id) : unfollowHashtag(id)
@@ -157,15 +143,11 @@ export default function Page() {
   })
 
   const {
-    status,
-    fetchStatus,
     data: feed,
     fetchNextPage,
     hasNextPage,
-    hasPreviousPage,
     isFetchingNextPage,
     isFetching,
-    isError,
     error,
   } = useInfiniteQuery({
     queryKey: ['getHashtagByNameFeed', id],
@@ -190,12 +172,7 @@ export default function Page() {
     },
   })
 
-  const {
-    data: related,
-    isFetching: relatedIsFetching,
-    isError: relatedIsError,
-    error: relatedError,
-  } = useQuery({
+  const { data: related } = useQuery({
     queryKey: ['getHashtagRelated', id],
     queryFn: async ({ pageParam }) => {
       const data = await getHashtagRelated(id)
