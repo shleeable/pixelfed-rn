@@ -99,62 +99,6 @@ export default function Screen() {
             <Switch.Thumb animation="quicker" />
           </Switch>
         </XStack>
-        {/* <Separator />
-        <XStack py="$3" px="$4" bg="white" justifyContent="space-between">
-          <YStack maxWidth="60%" gap="$2">
-            <Text fontSize="$5" fontWeight={'bold'}>
-              Require Alt-Text in Feeds
-            </Text>
-            <Text fontSize="$3" color="$gray9">
-              Hide posts without alt-text in feeds
-            </Text>
-          </YStack>
-          <Switch size="$3" defaultChecked={false}>
-            <Switch.Thumb animation="quicker" />
-          </Switch>
-        </XStack>
-        <Separator /> */}
-        {/* <XStack py="$3" px="$4" bg="white" justifyContent="space-between">
-          <YStack maxWidth="60%" gap="$2">
-            <Text fontSize="$5" fontWeight={'bold'}>
-              Reduce Motion
-            </Text>
-            <Text fontSize="$3" color="$gray9">
-              Disable all animations and auto play media
-            </Text>
-          </YStack>
-          <Switch size="$3" defaultChecked={false}>
-            <Switch.Thumb animation="quicker" />
-          </Switch>
-        </XStack>
-        <Separator /> */}
-        {/* <XStack py="$3" px="$4" bg="white" justifyContent="space-between">
-          <YStack maxWidth="60%" gap="$2">
-            <Text fontSize="$5" fontWeight={'bold'}>
-              Hide videos
-            </Text>
-            <Text fontSize="$3" color="$gray9">
-              Hide all video posts in feeds and discover
-            </Text>
-          </YStack>
-          <Switch size="$3" defaultChecked={false}>
-            <Switch.Thumb animation="quicker" />
-          </Switch>
-        </XStack> */}
-        {/* <Separator />
-        <XStack py="$3" px="$4" bg="white" justifyContent="space-between">
-          <YStack maxWidth="60%" gap="$2">
-            <Text fontSize="$5" fontWeight={'bold'}>
-              High Contrast Mode
-            </Text>
-            <Text fontSize="$3" color="$gray9">
-              Enable the high contrast UI
-            </Text>
-          </YStack>
-          <Switch size="$3" defaultChecked={false}>
-            <Switch.Thumb animation="quicker" />
-          </Switch>
-        </XStack> */}
       </ScrollView>
     </SafeAreaView>
   )
