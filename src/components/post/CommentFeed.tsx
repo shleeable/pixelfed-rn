@@ -623,24 +623,4 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(151, 151, 151, 0.25)',
     backgroundColor: 'rgba(151, 151, 151, 0.05)',
   },
-  nestedComment: {
-    marginLeft: 20,
-  },
-  childCommentContainer: {
-    borderLeftWidth: 1,
-    borderLeftColor: '#eee',
-    marginLeft: 15,
-  },
-  loadMoreReplies: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 8,
-    marginLeft: 45,
-  },
-  loadMoreLine: {
-    width: 20,
-    height: 1,
-    backgroundColor: '#ccc',
-    marginRight: 8,
-  },
 })
