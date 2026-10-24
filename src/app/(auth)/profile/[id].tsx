@@ -30,7 +30,6 @@ import { PixelfedBottomSheetModal } from 'src/components/common/BottomSheets'
 import ImageComponent from 'src/components/ImageComponent'
 import {
   blockProfileById,
-  followAccountById,
   getAccountById,
   getAccountByUsername,
   getAccountRelationship,
@@ -324,19 +323,6 @@ export default function ProfileScreen() {
     },
   })
 
-  const followMutation = useMutation({
-    mutationFn: () => {
-      return followAccountById(userId)
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['getAccountRelationship'] })
-      setTimeout(() => {
-        queryClient.invalidateQueries({ queryKey: ['getAccountById'] })
-        queryClient.invalidateQueries({ queryKey: ['getAccountByUsername'] })
-      }, 1000)
-    },
-  })
-
   const unfollowMutation = useMutation({
     mutationFn: () => {
       return unfollowAccountById(userId)
@@ -489,10 +475,6 @@ export default function ProfileScreen() {
     unmuteMutation.mutate()
   }
 
-  const handleFollow = () => {
-    followMutation.mutate()
-  }
-
   const handleUnfollow = () => {
     unfollowMutation.mutate()
   }
@@ -562,7 +544,6 @@ export default function ProfileScreen() {
         profile={user}
         relationship={relationship}
         openMenu={onOpenMenu}
-        onFollow={() => handleFollow()}
         onUnfollow={() => handleUnfollow()}
         onCancelFollowRequest={() => handleCancelFollowRequest()}
         onShare={() => handleOnShare()}

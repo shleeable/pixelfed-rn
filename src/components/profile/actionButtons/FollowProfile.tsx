@@ -4,11 +4,9 @@ import { followAccountById } from 'src/lib/api'
 import { Button, Spinner, useTheme, XStack } from 'tamagui'
 
 export default function FollowProfile({
-  onPress,
   userId,
   isLocked,
 }: {
-  onPress: () => Promise<void> | void
   userId: () => String
   isLocked: () => Boolean
 }) {

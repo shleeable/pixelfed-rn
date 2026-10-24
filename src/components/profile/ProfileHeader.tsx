@@ -45,7 +45,6 @@ interface ProfileHeaderProps {
   isSelf?: boolean
   relationship?: Relationship
   openMenu: () => void
-  onFollow: () => void
   onShare: () => void
   onUnfollow: () => void
   onCancelFollowRequest: () => void
@@ -60,7 +59,6 @@ export default function ProfileHeader({
   isSelf = false,
   relationship,
   openMenu,
-  onFollow,
   onShare,
   onUnfollow,
   onCancelFollowRequest,
@@ -142,13 +140,7 @@ export default function ProfileHeader({
       )
     }
     if (relationship && !relationship.following) {
-      return (
-        <FollowProfile
-          onPress={() => onFollow()}
-          userId={profile?.id}
-          isLocked={profile?.locked}
-        />
-      )
+      return <FollowProfile userId={profile?.id} isLocked={profile?.locked} />
     }
     return (
       <XStack w="100%" my="$3" gap="$2">
