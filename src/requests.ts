@@ -1,5 +1,4 @@
 import { Alert } from 'react-native'
-import { Storage } from './state/cache'
 import { compareSemver } from './utils'
 
 export function objectToForm(obj: { [key: string | number]: any }) {
@@ -31,40 +30,6 @@ export async function postForm(
   return resp
 }
 
-export async function postJson(
-  url: string,
-  data?: any,
-  token?: string,
-  customHeaders?: { [key: string]: string }
-) {
-  // Send a POST request with data formatted with FormData returning JSON
-  let headers: { [key: string]: string } = customHeaders ? customHeaders : {}
-
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`
-  }
-
-  headers['Accept'] = 'application/json'
-  headers['Content-Type'] = 'application/json'
-
-  const resp = await fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers,
-  })
-
-  return resp
-}
-
-export async function post(url: string, token?: string) {
-  const resp = await fetch(url, {
-    method: 'POST',
-    headers: token ? { Authorization: `Bearer ${token}` } : {},
-  })
-
-  return resp
-}
-
 export async function get(url: string, token?: string, data?: any) {
   let completeURL
   if (data) {
@@ -81,35 +46,6 @@ export async function get(url: string, token?: string, data?: any) {
   })
 
   return resp
-}
-
-export async function getJSON(
-  url: string,
-  token?: string,
-  data?: any,
-  customHeaders?: { [key: string]: string }
-) {
-  let completeURL
-  if (data) {
-    let params = new URLSearchParams(data)
-    completeURL = `${url}?${params.toString()}`
-  } else {
-    completeURL = url
-  }
-
-  let reqHeaders: HeadersInit = token ? { Authorization: `Bearer ${token}` } : {}
-
-  if (customHeaders) {
-    reqHeaders = { ...reqHeaders, ...customHeaders }
-  }
-
-  const resp = await fetch(completeURL, {
-    method: 'GET',
-    redirect: 'follow',
-    headers: reqHeaders,
-  })
-
-  return resp.json()
 }
 
 export function getJsonWithTimeout(
@@ -198,13 +134,4 @@ export async function verifyCredentials(domain: string, token: string) {
   }
 
   return resp.json()
-}
-
-export async function queryApi(endpoint: string, params = null) {
-  let server = Storage.getString('app.instance')
-  let token = Storage.getString('app.token')
-
-  let url = `https://${server}/${endpoint}`
-
-  return await getJSON(url, token, params)
 }
