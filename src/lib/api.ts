@@ -229,26 +229,6 @@ export async function searchQuery(query: string) {
   return mapd
 }
 
-export async function searchHashtagQuery(query: string) {
-  if (!query || query.trim() === '') return []
-  const instance = Storage.getString('app.instance')
-  const token = Storage.getString('app.token')
-
-  const url = `https://${instance}/api/v2/search?q=${encodeURIComponent(
-    query
-  )}&_pe=1&resolve=1`
-  const response = await fetch(url, {
-    method: 'get',
-    headers: new Headers({
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    }),
-  })
-  const data = await response.json()
-  return data.hashtags
-}
-
 export async function fetchNotifications({ queryKey, pageParam = false }) {
   let url
   const filterMap = {
@@ -488,27 +468,9 @@ export async function getTrendingHashtags() {
   return await fetchData(url)
 }
 
-export async function getTrendingPopularAccounts() {
-  const instance = Storage.getString('app.instance')
-  let url = `https://${instance}/api/v1.1/discover/accounts/popular`
-  return await fetchData(url)
-}
-
 export async function getTrendingPopularPosts() {
   const instance = Storage.getString('app.instance')
   let url = `https://${instance}/api/v1.1/discover/posts/trending?range=daily`
-  return await fetchData(url)
-}
-
-export async function getTrendingPopularPostsMonthly() {
-  const instance = Storage.getString('app.instance')
-  let url = `https://${instance}/api/v1.1/discover/posts/trending?range=monthly`
-  return await fetchData(url)
-}
-
-export async function getTrendingPopularPostsYearly() {
-  const instance = Storage.getString('app.instance')
-  let url = `https://${instance}/api/v1.1/discover/posts/trending?range=yearly`
   return await fetchData(url)
 }
 
@@ -768,10 +730,6 @@ export async function adminInstances(queryKey?: { pageParam?: string }, sort, so
   return { data: res.data, nextPage: res.links?.next, prevPage: res.links?.prev }
 }
 
-export async function adminInstanceGet() {
-  return await selfGet('api/admin/instances/get')
-}
-
 export async function getDomainBlocks() {
   return await selfGet('api/v1/domain_blocks')
 }
@@ -911,14 +869,6 @@ export async function putEditPost(id: string, params) {
   return await api.jsonRequest('PUT', `api/v1/statuses/${id}`, params)
 }
 
-export async function getStoryCarousel() {
-  return await selfGet(`api/v1.2/stories/carousel`)
-}
-
-export async function getStoryMentionAutocomplete(query) {
-  return await selfGet(`api/v1.2/stories/mention-autocomplete?q=${query}`)
-}
-
 export async function postStoryViewed(params) {
   return await selfPost(`api/v1.1/stories/seen`, params)
 }
@@ -955,9 +905,4 @@ export async function pushStateCompare(params) {
 
 export async function pushStateUpdate(params) {
   return await selfPost(`api/v1.1/push/update`, params, false, false, false, true)
-}
-
-export async function uploadNewStory(params) {
-  const path = `api/v1.2/stories/publish`
-  return await selfPost(path, params, true, false, true, true, true)
 }
